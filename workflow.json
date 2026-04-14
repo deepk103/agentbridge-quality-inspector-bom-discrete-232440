@@ -1,0 +1,379 @@
+{
+  "id": "tpl-3588724125",
+  "name": "Quality Inspector • BOM (Discrete)",
+  "description": "Quality Inspector • BOM (Discrete) routes sensor telemetry and balances inventory; applies decision gates and observability; orchestrates via WMS to prevent downtime.",
+  "industry": "Manufacturing",
+  "pattern": "RAG",
+  "complexity": "Advanced",
+  "rating": 4.4,
+  "downloads": 8011,
+  "favorites": 2080,
+  "executionTime": "11 min",
+  "tags": [
+    "scada",
+    "maintenance",
+    "rag",
+    "manufacturing"
+  ],
+  "steps": [
+    {
+      "id": "intake",
+      "name": "Inspection Intake",
+      "description": "Collect, validate and normalize downtime events from CMMS; attach a runId and timestamp for traceability."
+    },
+    {
+      "id": "retrieve-0",
+      "name": "Retrieve",
+      "description": "Execute retrieve phase for the RAG pattern: persist interim state, enforce guardrails, and emit structured JSON results."
+    },
+    {
+      "id": "ground-1",
+      "name": "Ground",
+      "description": "Execute ground phase for the RAG pattern: persist interim state, enforce guardrails, and emit structured JSON results."
+    },
+    {
+      "id": "dispatch-0",
+      "name": "Dispatch",
+      "description": "Dispatch across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "defect-detection-1",
+      "name": "Defect Detection",
+      "description": "Defect Detection across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "maintenance-plan-2",
+      "name": "Maintenance Plan",
+      "description": "Maintenance Plan across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "setup-optimization-3",
+      "name": "Setup Optimization",
+      "description": "Setup Optimization across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "traceability-4",
+      "name": "Traceability",
+      "description": "Traceability across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "finalize",
+      "name": "Maintenance Ticket",
+      "description": "Assemble final payload with status, artifacts, KPIs and audit trail; store to PLM; return response JSON for the client."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "intake",
+      "type": "agentbridge",
+      "data": {
+        "label": "Inspection Intake",
+        "description": "Collect, validate and normalize downtime events from CMMS; attach a runId and timestamp for traceability.",
+        "nodeType": "input",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 60,
+        "y": 120
+      }
+    },
+    {
+      "id": "retrieve-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "Retrieve",
+        "description": "Execute retrieve phase for the RAG pattern: persist interim state, enforce guardrails, and emit structured JSON results.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 310,
+        "y": 120
+      }
+    },
+    {
+      "id": "ground-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "Ground",
+        "description": "Execute ground phase for the RAG pattern: persist interim state, enforce guardrails, and emit structured JSON results.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 560,
+        "y": 120
+      }
+    },
+    {
+      "id": "dispatch-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "Dispatch",
+        "description": "Dispatch across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "mcp",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 810,
+        "y": 120
+      }
+    },
+    {
+      "id": "defect-detection-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "Defect Detection",
+        "description": "Defect Detection across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1060,
+        "y": 120
+      }
+    },
+    {
+      "id": "maintenance-plan-2",
+      "type": "agentbridge",
+      "data": {
+        "label": "Maintenance Plan",
+        "description": "Maintenance Plan across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1310,
+        "y": 120
+      }
+    },
+    {
+      "id": "setup-optimization-3",
+      "type": "agentbridge",
+      "data": {
+        "label": "Setup Optimization",
+        "description": "Setup Optimization across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1560,
+        "y": 120
+      }
+    },
+    {
+      "id": "traceability-4",
+      "type": "agentbridge",
+      "data": {
+        "label": "Traceability",
+        "description": "Traceability across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1810,
+        "y": 120
+      }
+    },
+    {
+      "id": "finalize",
+      "type": "agentbridge",
+      "data": {
+        "label": "Maintenance Ticket",
+        "description": "Assemble final payload with status, artifacts, KPIs and audit trail; store to PLM; return response JSON for the client.",
+        "nodeType": "output",
+        "category": "ai-models",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 2060,
+        "y": 120
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-0",
+      "source": "intake",
+      "target": "retrieve-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-1",
+      "source": "retrieve-0",
+      "target": "ground-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-2",
+      "source": "ground-1",
+      "target": "dispatch-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-3",
+      "source": "dispatch-0",
+      "target": "defect-detection-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-4",
+      "source": "defect-detection-1",
+      "target": "maintenance-plan-2",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-5",
+      "source": "maintenance-plan-2",
+      "target": "setup-optimization-3",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-6",
+      "source": "setup-optimization-3",
+      "target": "traceability-4",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-7",
+      "source": "traceability-4",
+      "target": "finalize",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    }
+  ],
+  "preview": "Inspection Intake → Retrieve → Ground → Dispatch → Defect Detection → Maintenance Plan → Setup Optimization → Traceability → Maintenance Ticket",
+  "featured": true,
+  "createdAt": "2025-07-17T14:18:37.634Z",
+  "author": "AgentBridge Team",
+  "deployments": 824,
+  "lastDeployed": "2026-03-25T01:50:23.826Z",
+  "configuration": {
+    "provider": "azure",
+    "region": "us-west-2",
+    "compute": "cpu-optimized"
+  },
+  "healthStatus": "degraded",
+  "deploymentCount": 401,
+  "githubRepo": "https://github.com/agentbridge/quality-inspector-•-bom-(discrete)",
+  "maintainer": "AgentBridge Team",
+  "agenticLayers": {
+    "reasoning": {
+      "modelType": "gpt-4o",
+      "reasoningPattern": "ReAct",
+      "contextWindow": 128000,
+      "memorySystem": "hybrid",
+      "decisionFramework": "Multi-Criteria Decision Analysis"
+    },
+    "orchestration": {
+      "workflowEngine": "n8n",
+      "coordinationPattern": "centralized",
+      "failoverStrategy": "retry",
+      "loadBalancing": "intelligent"
+    },
+    "protocol": {
+      "communicationProtocol": "MCP",
+      "messageFormat": "JSON",
+      "authenticationMethod": "OAuth2",
+      "encryptionStandard": "AES-256"
+    },
+    "governance": {
+      "policyEngine": "OPA",
+      "complianceStandards": [
+        "SOC2",
+        "GDPR"
+      ],
+      "auditTrail": true,
+      "riskAssessment": "medium",
+      "dataClassification": "internal"
+    },
+    "observability": {
+      "metricsCollection": "Prometheus",
+      "loggingFramework": "ELK",
+      "tracingSystem": "Jaeger",
+      "alertingRules": [],
+      "dashboardConfig": {
+        "layout": "grid",
+        "widgets": [
+          "metrics",
+          "logs",
+          "traces"
+        ],
+        "refreshInterval": 30
+      }
+    },
+    "intelligence": {
+      "learningCapability": "online",
+      "knowledgeBase": "vector-db",
+      "adaptationMechanism": "ml-based",
+      "performanceOptimization": "ai-driven"
+    }
+  },
+  "businessFunction": "data-preparation-node",
+  "autonomyLevel": "semi-autonomous",
+  "cognitiveCapabilities": [
+    {
+      "name": "Pattern Recognition",
+      "description": "Identifies patterns in business processes",
+      "confidenceLevel": 0.85,
+      "lastUpdated": "2026-04-14T14:18:37.690Z"
+    }
+  ],
+  "roiMetrics": {
+    "costSavings": 40663,
+    "timeReduction": 27,
+    "accuracyImprovement": 18,
+    "throughputIncrease": 48,
+    "errorReduction": 71
+  },
+  "complianceFramework": {
+    "standards": [
+      "SOC2",
+      "GDPR",
+      "ISO27001"
+    ],
+    "certifications": [
+      "SOC2 Type II"
+    ],
+    "auditFrequency": "monthly",
+    "lastAudit": "2026-03-04T06:34:19.397Z"
+  },
+  "scalingPolicy": {
+    "minInstances": 1,
+    "maxInstances": 10,
+    "scaleUpThreshold": 80,
+    "scaleDownThreshold": 20,
+    "cooldownPeriod": 300
+  }
+}
